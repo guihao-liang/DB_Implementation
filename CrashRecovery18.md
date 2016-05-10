@@ -47,7 +47,8 @@ Any change to a database is first recorded in log.
 * Log the changes during undo. **Note**, you don't have to undo an undo. Take some time to think about.
 
 #### CLR (compensation log record)   
-CLR is written just right before the change recorded in an update log record is undone. Avoid undo again when restart again. Also, tell the ARIES the undo process so far. 
+
+__CLR__ is written just right before the change recorded in an update log record is undone. Avoid undo again when restart again. Also, tell the ARIES the undo process so far. 
 
 __linked list__ structure: undoNextLSN: read form prevLSN field of LSN undone.   
 

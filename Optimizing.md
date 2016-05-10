@@ -5,10 +5,10 @@
 * MERGE SORTING
  1. first run to individually on given memory size.
  2. merge pass by pass by factor F. B is the buffer size for sorting.
- 3. formula: 2|R|(log(|R|/B, F) + 1, roughly O(Nlog(N))
+ 3. formula: 2|R|(ceiling(log(|R|/B, F)) + 1), roughly O(Nlog(N))
  4. minimizing the initial run: replacement sort, which can write out runs in approximately 2B
  5. double buffering: keep CPU busy.
- 6. blocked I/O: reduce the number of the I/O request.
+ 6. blocked I/O: reduce the number of the I/O requests.
 ---
 ## CH14 EVALUATION RELATIONAL OPERATORS
 * SELECTION

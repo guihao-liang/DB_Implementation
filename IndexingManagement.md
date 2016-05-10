@@ -2,13 +2,13 @@
 # CH9-CH11
 ---
 
-Assumption: the records can fit int one page.
+Assumption: one or multiple records can fit into one page.
 
 ---
 ## CH9
 ### DISk
 ---
-* Magnetic DISk
+* Magnetic Disk
  1. in units called block
  2. cylinder, platter, sector (abstracted as page in file system)
         > disk access 10 ms, main memory 60 nanoseconds.
@@ -19,7 +19,7 @@ Assumption: the records can fit int one page.
 ---
 * __RAID & Dara Striping__  
  1. Redundancy Arrays of Independent Disks
- 2. improve the reliability and concurrent access.
+ 2. Improve the reliability and concurrent access.
  3.
  __data striping__: data is segmented into equal-size partitions distributed over multiple disks.  
  __striping unit__: the size of the partition.  
@@ -32,13 +32,13 @@ Assumption: the records can fit int one page.
  1. __Abstrction__: support the __page__ as the a unit of data.
  2. the size of the page is chosen to be the size of a disk block and pages are stored as disk blocks so that reading or writing a page can be done in on disk I/O
  3. keeping track of the free space on the disk.
- 4. OS file system or build from scratch. portability. self-containded.
+ 4. OS file system or build from scratch. portability. self-contained.
 ---
 * Buffer Manager
  1. the main memory pages in the buffer pool is called __frame__.
  2. __pin_count__: the number of current users of the frame (number of times current requested but not released)
- 3. __dirty__: frame has been modified.
- 4. replacement policies.
+ 3. __dirty__: frame has been modified but not propagated to disk.
+ 4. __stealing__: Uncommitted data in RAM written to disk caused by replacement policies.
 ---
 * Record formats:
  1. given record type is stored in the system catalog, which avoids repeatedly storage of same information.
@@ -51,4 +51,6 @@ Assumption: the records can fit int one page.
 ---
 * __Hash based indexing__
  1. extensible hashing and linear probing with overflow buckets.
- 2. just a way to distribute the data more evenly. 
+ 2. just a way to distribute the data more evenly.
+
+* __linear hashing__

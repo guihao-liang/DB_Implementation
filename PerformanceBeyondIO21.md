@@ -9,8 +9,8 @@
 CPU brings objects like arrays in advance into cache and utilizes predictable access pattern to overlap the latency.
 
 ### locality
-* we don't use replacement policy as buffer pool controlled by hardware because in cache, things goes so fast, we don't have time to compute.
-* ? special
+* temporal: we don't use replacement policy as buffer pool controlled by hardware because in cache, things goes so fast, we don't have time to compute.
+* spacial: predictable data structure. When querying a node of B+ tree, we know we need to fetch 4k of the block data.
 
 ### Branching And Data Caching
 * B+ Tree (Branching Factor)
@@ -67,11 +67,15 @@ L1 is supposed to be really fast since you want to get data in 2 cycles. By addi
 
 * interleaving vs batch.
 
-Pipelining join.
+pipeline join:
+S join R -> join M -> join N -> result.
+Instruction 1 -> instruction 2 -> instruction 3
 
 interleaving may introduce new code to evict previous instructions out of cache. So the extra overhead of switching cache instruction is introduced. So a batch of record to be processed in a pipeline is better than interleaving on every single record.
 
 * Instruction decode
+
+[CPU pipelining](http://cs.stanford.edu/people/eroberts/courses/soco/projects/risc/pipelining/).
 
 Instruction can be decoded into micro instructions so that CPU can pipeline these micro instructions to make processing faster. But **condition branching (if else)** will poison this scheme and leads to a CPU bubble. If the pipeline loads the code for true, while the real condition is false, the part of the pipeline should be aborted.
 

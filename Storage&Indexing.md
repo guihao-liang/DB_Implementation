@@ -14,20 +14,20 @@
  3. read and write unit with multiple of pages.
 
 
-* buffer manager
+* buffer/space manager
  1. data is read into memory for processing, and written to disk for persistent storage by a layer called buffer manager.
  2. the space on the disk is managed by the disk space manager.
 
 
 * file
  1. a file of records is an important abstraction.
- 2. c collection of disk pages.
+ 2. a collection of disk pages.
 
 
 * index
  1. a data structure that organizes data records on disk to optimize certain kind of retrieval operations.
  2. retrieve records that satisfy search conditions on the search key fields of the index.
- 3. organization: <k, \*>, <k,rid>, <k, rid-list>
+ 3. organization: < k, \* >, < k,rid >, < k, rid-list >  // rid stands for record id.
  4. special file organization.
  5. the search key for an index can contain several fields; such keys are called __composite search key or concatenated keys__.
 
